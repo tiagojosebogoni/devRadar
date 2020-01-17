@@ -69,7 +69,7 @@ export default function Main({ navigation }) {
         initialRegion={currentRegion}
       >
         {devs.map(dev => (
-          <Dev key={dev._id} dev={dev} />
+          <Dev navigation={navigation} key={dev._id} dev={dev} />
         ))}
       </Map>
       <Container>

@@ -4,7 +4,7 @@ import { Marker, Callout} from 'react-native-maps';
 
 import { Avatar, Info, Name, Bio, Techs } from './styles';
 
-export default function Dev({ dev }) {
+export default function Dev({ navigation, dev }) {
   return (
     <Marker 
       coordinate={{ 
@@ -15,7 +15,7 @@ export default function Dev({ dev }) {
       <Avatar source={{ uri: dev.avatar_url}}/>
 
       <Callout onPress={() => {
-          navigation.navigate('Profile', { github_username: dev.github_usename})
+          navigation.navigate('Profile', { github_username: dev.github_username})
         }}>
         <Info>
           <Name>{dev.name}</Name>

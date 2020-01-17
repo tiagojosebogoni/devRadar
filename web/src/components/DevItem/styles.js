@@ -9,6 +9,7 @@ export const Container = styled.div`
 `;
 
 export const ListItem = styled.li`
+  height: 190px;
   background: #fff;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;

@@ -1,0 +1,28 @@
+# DevRadar 🛰
+
+### Aplicativo para encontrar desenvolvedor por distância e tecnologias
+
+## Semana OmniStack 10.0
+
+Aplicativo de teste para encontrar/cadastrar/remover desenvolvedores
+-Implementado usando ReactJS, React Native e NodeJS
+
+--> dependências(adicionar um script para instalar tudo), programas, bibliotecas necessárias:
+
+express,
+node,
+nodemon,
+yarn,
+mongoose,
+cors,
+axios,
+Insomnia,
+MongoDB Compass,
+--> Para executar:
+
+clone este repositório,
+entre na pasta backend usando o terminal do ubuntu ou o powershell e digite: yarn dev (isso executará o back end do app)
+acesse http://localhost:3000
+Tudo ok!
+
+

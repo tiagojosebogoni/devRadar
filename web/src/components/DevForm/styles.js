@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Input } from '@rocketseat/unform';
 
 export const Container = styled.div`
-  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
   background: #fff;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;
