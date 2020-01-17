@@ -26,7 +26,7 @@ DevRadar
 </p>
 
 <div>
-  <img src="/web/assets/Tela Cheia.png" alt="web" height="425">
+  <img src="/web/assets/Telacheia.png" alt="web" height="425">
   <img src="/devRadar/assets/Main.jpg" alt="mobile" height="425">
 </div>
 
