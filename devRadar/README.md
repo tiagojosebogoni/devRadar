@@ -26,8 +26,8 @@ DevRadar
 </p>
 
 <div>
-  <img src="/web/assets/Telacheia.png" alt="web" height="425">
-  <img src="/web/assets/Redimensionado.png" alt="web" height="425">
+  <img src="/devRadar/assets/Main.jpg" alt="mobile" height="425">
+  <img src="/devRadar/assets/PerfilGithub.jpg" alt="mobile" height="425">
 </div>
 
 <hr />
