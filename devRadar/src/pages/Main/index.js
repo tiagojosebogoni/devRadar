@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native'
 import { Marker, Callout} from 'react-native-maps';
-import { 
-  requestPermissionsAsync, 
-  getCurrentPositionAsync 
+import {
+  requestPermissionsAsync,
+  getCurrentPositionAsync
 } from 'expo-location'
 
 import api from '../../services/api';
-
+import { connect, disconnect, subscribeToNewDev } from '../../services/socket';
 import Dev from '../../components/Dev';
 
-import { 
-  Map, 
-  Container, 
-  Input, 
-  Button, 
-  Icon } 
+import {
+  Map,
+  Container,
+  Input,
+  Button,
+  Icon }
   from './styles';
 
 export default function Main({ navigation }) {
@@ -26,15 +26,15 @@ export default function Main({ navigation }) {
   useEffect(() => {
     async function loadPosition(){
       const { granted } = await requestPermissionsAsync();
- 
+
       if (granted){
         const { coords } = await getCurrentPositionAsync();
-      
+
         const { latitude, longitude } = coords;
 
         setCurrentRegion({
           latitude,
-          longitude, 
+          longitude,
           latitudeDelta: 0.04,
           longitudeDelta: 0.04,
         })
@@ -43,6 +43,18 @@ export default function Main({ navigation }) {
 
     loadPosition();
   }, [])
+
+
+  useEffect(() => {
+    subscribeToNewDev(dev => setDevs([...devs, dev]))
+  }, [devs])
+
+  function setupWebSocket(){
+    disconnect();
+    const { latitude, longitude } = currentRegion;
+
+    connect( latitude, longitude, techs )
+  }
 
   async function loadDevs(){
     const { latitude, longitude } = currentRegion;
@@ -56,6 +68,7 @@ export default function Main({ navigation }) {
     })
 
     setDevs(response.data);
+    setupWebSocket();
   }
 
   async function handleRegionChange(region){
@@ -64,8 +77,8 @@ export default function Main({ navigation }) {
 
   return (
     <>
-      <Map 
-        onRegionChangeComplete={handleRegionChange} 
+      <Map
+        onRegionChangeComplete={handleRegionChange}
         initialRegion={currentRegion}
       >
         {devs.map(dev => (
@@ -73,11 +86,11 @@ export default function Main({ navigation }) {
         ))}
       </Map>
       <Container>
-        <Input 
+        <Input
           placeholder="Buscar devs por techs..."
           placeholderTextColor="#999"
           autoCapitalize="words"
-          autoCorrect={false}  
+          autoCorrect={false}
           value={techs}
           onChangeText={setTechs}
           />
